@@ -1,0 +1,25 @@
+{
+  "name": "js_array_extension",
+  "version": "1.0.0",
+  "description": "JS Array extensions exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oorduno/js_array_extension.git"
+  },
+  "author": "oorduno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oorduno/js_array_extension/issues"
+  },
+  "homepage": "https://github.com/oorduno/js_array_extension#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.1"
+  }
+}
