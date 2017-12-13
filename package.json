@@ -1,0 +1,25 @@
+{
+  "name": "js_array_extension",
+  "version": "1.0.0",
+  "description": "JS array extension exercise",
+  "main": "array_extensions.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oorduno/js_array_extension.git"
+  },
+  "author": "Obed Orduno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oorduno/js_array_extension/issues"
+  },
+  "homepage": "https://github.com/oorduno/js_array_extension#readme"
+}
