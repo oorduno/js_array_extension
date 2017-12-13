@@ -2,7 +2,7 @@
   "name": "js_array_extension",
   "version": "1.0.0",
   "description": "JS array extension exercise",
-  "main": "index.js",
+  "main": "array_extensions.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.1.2",
