@@ -18,4 +18,26 @@ Array.prototype.where = function(callback){
   return result;
 }
 
+Array.prototype.any = function(spec){
+  if(typeof spec === 'function'){
+
+    for(var i = 0; i < this.length; i++){
+      if(spec.call(this, this[i]) === true){
+        return true;
+        //break;
+      }
+    }
+
+  }else{
+    for(var i = 0; i < this.length; i++){
+      if(spec === this[i]){
+        return true;
+        //break;
+      }
+    }
+  }
+
+  return false;
+}
+
 module.exports = Array;
