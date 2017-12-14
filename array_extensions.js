@@ -16,7 +16,7 @@ Array.prototype.where = function(callback){
   });
 
   return result;
-}
+};
 
 Array.prototype.any = function(spec){
   if(typeof spec === 'function'){
@@ -24,7 +24,6 @@ Array.prototype.any = function(spec){
     for(var i = 0; i < this.length; i++){
       if(spec.call(this, this[i]) === true){
         return true;
-        //break;
       }
     }
 
@@ -32,12 +31,24 @@ Array.prototype.any = function(spec){
     for(var i = 0; i < this.length; i++){
       if(spec === this[i]){
         return true;
-        //break;
       }
     }
   }
 
   return false;
-}
+};
+
+Array.prototype.select = function(spec){
+  var result = [];
+  var that = this;
+
+  if(typeof spec === 'function'){
+    this.forEach(function(element, index){
+      result.push(spec.call(that, element));
+    });
+  }
+
+  return result;
+};
 
 module.exports = Array;
