@@ -3,7 +3,7 @@ var ArrayExtension = require('../array_extensions.js');
 
 describe('each(callback) method', function(){
   var people;
-  beforeEach(function() {
+  beforeEach(function(){
     people = [
       {name: 'Pedro', age: 19},
       {name: 'Juan', age: 15},
@@ -11,7 +11,6 @@ describe('each(callback) method', function(){
       {name: 'Pancho', age: 20},
       {name: 'Topo', age: 18}
     ];
-    Object.seal(people);
   });
 
   it('Should iterate over all array elements. v2', function(){
