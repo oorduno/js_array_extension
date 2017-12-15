@@ -167,4 +167,33 @@ Array.prototype.pluck = function(property){
   return result;
 };
 
+Array.prototype.sum = function(spec){
+  var result, reducer, specResult, initValue;
+
+  if(typeof spec === 'undefined'){
+    if(typeof this[0] === 'string'){
+      initValue = '';
+    }else{
+      initValue = 0;
+    }
+    reducer = function(total, currentValue){
+      return total + currentValue;
+    };
+    result = this.reduce(reducer, initValue);
+  }else{
+    reducer = function(total, currentValue){
+      specResult = spec.call(this, currentValue);
+      return total + specResult;
+    }.bind(this);
+
+    result = this.reduce(reducer, 0);
+
+    if(typeof result === 'string' && result.charAt(0) === '0'){
+      result = result.substr(1);
+    }
+  }
+
+  return result;
+};
+
 module.exports = Array;
