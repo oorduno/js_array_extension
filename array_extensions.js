@@ -69,7 +69,7 @@ Array.prototype.take = function(howMany, spec){
   }
 
   return result;
-}
+};
 
 Array.prototype.skip = function(howMany){
   var result = [];
@@ -81,6 +81,22 @@ Array.prototype.skip = function(howMany){
   }
 
   return result;
-}
+};
+
+Array.prototype.first = function(spec){
+  var result = null;
+
+  if(typeof spec === 'undefined'){
+    return this[0];
+  }else{
+    for(var i = 0; i < this.length; i++){
+      if(spec.call(this, this[i]) === true){
+        return this[i];
+      }
+    }
+  }
+
+  return result;
+};
 
 module.exports = Array;
