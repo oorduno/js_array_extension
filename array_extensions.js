@@ -71,4 +71,16 @@ Array.prototype.take = function(howMany, spec){
   return result;
 }
 
+Array.prototype.skip = function(howMany){
+  var result = [];
+
+  if(howMany < this.length){
+    for(var i = howMany; i < this.length; i++){
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+}
+
 module.exports = Array;
