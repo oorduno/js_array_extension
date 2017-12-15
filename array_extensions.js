@@ -139,4 +139,20 @@ Array.prototype.count = function(spec){
   return result;
 };
 
+Array.prototype.index = function(spec){
+  var result = -1;
+
+  if(typeof spec === 'function'){
+    for(var i = 0; i < this.length; i++){
+      if(spec.call(this, this[i]) === true){
+        return i;
+      }
+    }
+  }else{
+    return this.indexOf(spec);
+  }
+
+  return result;
+};
+
 module.exports = Array;
