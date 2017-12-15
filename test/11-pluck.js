@@ -20,7 +20,7 @@ describe('pluck(property) method', function(){
       {name: 'Obed', age: 99},
       {name: 'Oscar', age: 33},
       {name: 'Juan', age: 19}
-    ]
+    ];
     result = [];
   });
 
