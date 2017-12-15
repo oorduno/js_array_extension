@@ -51,4 +51,24 @@ Array.prototype.select = function(spec){
   return result;
 };
 
+Array.prototype.take = function(howMany, spec){
+  var result = [];
+
+  if(typeof spec === 'undefined'){
+    result = this.slice(0, (howMany));
+  }else{
+    for(var i = 0; i < this.length; i++){
+     if(spec.call(this, this[i]) === true){
+        result.push(this[i]);
+        if(howMany <= result.length){
+          break;
+        }
+      }
+    }
+
+  }
+
+  return result;
+}
+
 module.exports = Array;
