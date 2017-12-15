@@ -155,4 +155,16 @@ Array.prototype.index = function(spec){
   return result;
 };
 
+Array.prototype.pluck = function(property){
+  var result = [];
+
+  this.forEach(function(element, index){
+    if(property in element){
+      result.push(element[property]);
+    }
+  }, this);
+
+  return result;
+};
+
 module.exports = Array;
