@@ -86,10 +86,34 @@ Array.prototype.skip = function(howMany){
 Array.prototype.first = function(spec){
   var result = null;
 
+  if(!this.length){
+    return result
+  }
+
   if(typeof spec === 'undefined'){
     return this[0];
   }else{
     for(var i = 0; i < this.length; i++){
+      if(spec.call(this, this[i]) === true){
+        return this[i];
+      }
+    }
+  }
+
+  return result;
+};
+
+Array.prototype.last = function(spec){
+  var result = null;
+
+  if(!this.length){
+    return result;
+  }
+
+  if(typeof spec === 'undefined'){
+    result = this[this.length - 1];
+  }else{
+    for(var i = (this.length - 1); i >= 0; i--){
       if(spec.call(this, this[i]) === true){
         return this[i];
       }
