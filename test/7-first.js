@@ -21,6 +21,7 @@ describe('first(spec) method', function(){
 
   it('Should return null if the collection is empty or if there is no match', function(){
     var result2 = [];
+    var result3 = [];
 
     result = [].first(function(name){
       return name === 'Santa';
@@ -30,8 +31,11 @@ describe('first(spec) method', function(){
       return name === 'Santa';
     });
 
+    result3 = [].first();
+
     assert.isNull(result);
-    assert.isNull(result);
+    assert.isNull(result2);
+    assert.isNull(result3);
   });
 
   it('Should return the first element that satisfies the specification', function(){
