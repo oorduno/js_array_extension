@@ -123,4 +123,20 @@ Array.prototype.last = function(spec){
   return result;
 };
 
+Array.prototype.count = function(spec){
+  var result = 0;
+
+  if(typeof spec === 'undefined'){
+    return this.length;
+  }else{
+    this.forEach(function(element, index){
+      if(spec.call(this, element) === true){
+        result++;
+      }
+    }, this);
+  }
+
+  return result;
+};
+
 module.exports = Array;
