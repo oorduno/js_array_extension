@@ -270,4 +270,18 @@ Array.prototype.min = function(comparer){
   return result;
 };
 
+Array.prototype.flatten = function(){
+  var result = [];
+
+  var reducer = function(last, currentValue){
+    return last.concat(
+      Array.isArray(currentValue) ? currentValue.flatten() : currentValue
+    );
+  };
+
+  result = this.reduce(reducer, []);
+
+  return result;
+};
+
 module.exports = Array;
