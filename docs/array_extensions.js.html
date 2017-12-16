@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: array_extensions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: array_extensions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 * Execute the callback function against every element in the collection
 * @function
 * @name each
@@ -44,14 +72,14 @@ Array.prototype.where = function(callback){
 Array.prototype.any = function(spec){
   if(typeof spec === 'function'){
 
-    for(var i = 0; i < this.length; i++){
+    for(var i = 0; i &lt; this.length; i++){
       if(spec.call(this, this[i]) === true){
         return true;
       }
     }
 
   }else{
-    for(var i = 0; i < this.length; i++){
+    for(var i = 0; i &lt; this.length; i++){
       if(spec === this[i]){
         return true;
       }
@@ -67,7 +95,7 @@ Array.prototype.any = function(spec){
 * @function
 * @name select
 * @param {function} spec - Function that returns the new elements
-* @return {array} New collection containing the elements
+* @return {array} New collection containing the elements 
 * returned by the spec function
 */
 Array.prototype.select = function(spec){
@@ -101,10 +129,10 @@ Array.prototype.take = function(howMany, spec){
   if(typeof spec === 'undefined'){
     result = this.slice(0, (howMany));
   }else{
-    for(var i = 0; i < this.length; i++){
+    for(var i = 0; i &lt; this.length; i++){
      if(spec.call(this, this[i]) === true){
         result.push(this[i]);
-        if(howMany <= result.length){
+        if(howMany &lt;= result.length){
           break;
         }
       }
@@ -126,8 +154,8 @@ Array.prototype.take = function(howMany, spec){
 Array.prototype.skip = function(howMany){
   var result = [];
 
-  if(howMany < this.length){
-    for(var i = howMany; i < this.length; i++){
+  if(howMany &lt; this.length){
+    for(var i = howMany; i &lt; this.length; i++){
       result.push(this[i]);
     }
   }
@@ -155,7 +183,7 @@ Array.prototype.first = function(spec){
   if(typeof spec === 'undefined'){
     return this[0];
   }else{
-    for(var i = 0; i < this.length; i++){
+    for(var i = 0; i &lt; this.length; i++){
       if(spec.call(this, this[i]) === true){
         return this[i];
       }
@@ -224,7 +252,7 @@ Array.prototype.count = function(spec){
 * @function
 * @name index
 * @param {function|Object} spec - Function that defines the criteria for
-* the index result.
+* the index result. 
 * @return {number} Zero based position of the element that satisfy
 * the spec criteria. -1 if no element matched.
 */
@@ -232,7 +260,7 @@ Array.prototype.index = function(spec){
   var result = -1;
 
   if(typeof spec === 'function'){
-    for(var i = 0; i < this.length; i++){
+    for(var i = 0; i &lt; this.length; i++){
       if(spec.call(this, this[i]) === true){
         return i;
       }
@@ -271,7 +299,7 @@ Array.prototype.pluck = function(property){
 * @function
 * @name sum
 * @param {function}[spec] - Function that defines the value for the
-* summatory result. If not present, returns the summatory of the
+* summatory result. If not present, returns the summatory of the 
 * array elements.
 * @return {number|string} Result of the summatory of executing the
 * spec function on each array's element.
@@ -326,7 +354,7 @@ Array.prototype.max = function(comparer){
       if(typeof element !== 'number'){
         throw new Error('Numbers only');
       }
-      if(result < element){
+      if(result &lt; element){
         result = element;
       }
     });
@@ -336,7 +364,7 @@ Array.prototype.max = function(comparer){
         return currentValue;
       }
       comparerValue = comparer.call(this, max, currentValue);
-      if(comparerValue < 0){
+      if(comparerValue &lt; 0){
         return currentValue;
       }
 
@@ -373,7 +401,7 @@ Array.prototype.min = function(comparer){
       if(index === 0){
         result = element;
       }
-      if(element < result){
+      if(element &lt; result){
         result = element;
       }
     });
@@ -417,4 +445,26 @@ Array.prototype.flatten = function(){
   return result;
 };
 
-module.exports = Array;
+module.exports = Array;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#any">any</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#pluck">pluck</a></li><li><a href="global.html#select">select</a></li><li><a href="global.html#skip">skip</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#where">where</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 15 2017 20:17:37 GMT-0700 (MST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

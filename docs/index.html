@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h2>Functions</h2><dl>
+<dt><a href="#each">each(callback)</a></dt>
+<dd><p>Execute the callback function against every element in the collection</p>
+</dd>
+<dt><a href="#where">where(callback)</a> ⇒ <code>array</code></dt>
+<dd><p>Creates a new array that contains all elements that
+satisfies the given callback function</p>
+</dd>
+<dt><a href="#any">any(spec)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Returns true if any of the elements in the array satisfies
+the given spec</p>
+</dd>
+<dt><a href="#select">select(spec)</a> ⇒ <code>array</code></dt>
+<dd><p>Creates a new collection containing the elements returned by
+the spec function</p>
+</dd>
+<dt><a href="#take">take(howMany, [spec])</a> ⇒ <code>array</code></dt>
+<dd><p>Creates a new collection containing 'howMany' elements</p>
+</dd>
+<dt><a href="#skip">skip(howMany)</a> ⇒ <code>array</code></dt>
+<dd><p>Produces new Array which will not include the first 'howMany' elements</p>
+</dd>
+<dt><a href="#first">first([spec])</a> ⇒ <code><em></code> | <code>null</code></dt>
+<dd><p>Returns the first element that statisfies the spec, if there is no
+spec then it will return the first array's element.</p>
+</dd>
+<dt><a href="#last">last([spec])</a> ⇒ <code></em></code> | <code>null</code></dt>
+<dd><p>Returns the last array's element that satisfies the given spec</p>
+</dd>
+<dt><a href="#count">count([spec])</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the number of elements that satisfies the spec</p>
+</dd>
+<dt><a href="#index">index(spec)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the zero based position in the array fo the element that
+satisfies the spec.</p>
+</dd>
+<dt><a href="#pluck">pluck(property)</a> ⇒ <code>array</code></dt>
+<dd><p>Returns a new array containing the 'property' values</p>
+</dd>
+<dt><a href="#sum">sum([spec])</a> ⇒ <code>number</code> | <code>string</code></dt>
+<dd><p>Returns the summatory of the result of executing the spec function
+on each array's element.</p>
+</dd>
+<dt><a href="#max">max([comparer])</a> ⇒ <code>null</code> | <code>number</code> | <code>string</code></dt>
+<dd><p>Returns the maximum value in the collection.</p>
+</dd>
+<dt><a href="#min">min([comparer])</a> ⇒ <code>null</code> | <code>number</code> | <code>string</code></dt>
+<dd><p>Returns the minimum value in the collection.</p>
+</dd>
+<dt><a href="#flatten">flatten()</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns a new flat array, un-nesting arrays within other arrays.</p>
+</dd>
+</dl>
+
+<p><a name="each"></a></p>
+<h2>each(callback)</h2><p>Execute the callback function against every element in the collection</p>
+<p><strong>Kind</strong>: global function  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><code>function</code></td>
+<td>Callback function to execute against every element in th collection</td>
+</tr>
+</tbody>
+</table>
+<p><a name="where"></a></p>
+<h2>where(callback) ⇒ <code>array</code></h2><p>Creates a new array that contains all elements that
+satisfies the given callback function</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>array</code> - New collection with the elements that matched the
+callback function  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><code>function</code></td>
+<td>Callback to decide new elements</td>
+</tr>
+</tbody>
+</table>
+<p><a name="any"></a></p>
+<h2>any(spec) ⇒ <code>boolean</code></h2><p>Returns true if any of the elements in the array satisfies
+the given spec</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> - If any of the elements matched the spec function  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spec</td>
+<td><code>function</code> \</td>
+<td><code>*</code></td>
+<td>Function tested for each element in the array</td>
+</tr>
+</tbody>
+</table>
+<p><a name="select"></a></p>
+<h2>select(spec) ⇒ <code>array</code></h2><p>Creates a new collection containing the elements returned by
+the spec function</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>array</code> - New collection containing the elements 
+returned by the spec function  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spec</td>
+<td><code>function</code></td>
+<td>Function that returns the new elements</td>
+</tr>
+</tbody>
+</table>
+<p><a name="take"></a></p>
+<h2>take(howMany, [spec]) ⇒ <code>array</code></h2><p>Creates a new collection containing 'howMany' elements</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>array</code> - New collection containing 'howMany' elements
+matched the spec criteria  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>howMany</td>
+<td><code>number</code></td>
+<td>Defines how many elements the the new collection will have</td>
+</tr>
+<tr>
+<td>[spec]</td>
+<td><code>function</code></td>
+<td>Function that defines the criteria for the new collection elements. If not defined, returns 'howMany' elements for the new collection</td>
+</tr>
+</tbody>
+</table>
+<p><a name="skip"></a></p>
+<h2>skip(howMany) ⇒ <code>array</code></h2><p>Produces new Array which will not include the first 'howMany' elements</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>array</code> - New collection which not includes the first 'howMany' elements  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>howMany</td>
+<td><code>number</code></td>
+<td>Defines 'howMany' elements to skip for the new collection</td>
+</tr>
+</tbody>
+</table>
+<p><a name="first"></a></p>
+<h2>first([spec]) ⇒ <code>*</code> | <code>null</code></h2><p>Returns the first element that statisfies the spec, if there is no
+spec then it will return the first array's element.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>*</code> | <code>null</code> - First element that matched the spec criteria.
+Null in case that none element matched or if the collection is empty.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[spec]</td>
+<td><code>function</code></td>
+<td>Function that defines the criteria for the element returned. If not present, return the first array element.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="last"></a></p>
+<h2>last([spec]) ⇒ <code>*</code> | <code>null</code></h2><p>Returns the last array's element that satisfies the given spec</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>*</code> | <code>null</code> - Last element that matched the spec criteria.
+Null in case that none element matched or if the collection is empty.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[spec]</td>
+<td><code>function</code></td>
+<td>Function that defines the criteria for the element returned. If not present, return the last array element.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="count"></a></p>
+<h2>count([spec]) ⇒ <code>number</code></h2><p>Returns the number of elements that satisfies the spec</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>number</code> - Number of elements that satisfies the spec criteria.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[spec]</td>
+<td><code>function</code></td>
+<td>Function that defines the criteria for the count result. If not present, returns the array's length property.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="index"></a></p>
+<h2>index(spec) ⇒ <code>number</code></h2><p>Returns the zero based position in the array fo the element that
+satisfies the spec.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>number</code> - Zero based position of the element that satisfy
+the spec criteria. -1 if no element matched.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spec</td>
+<td><code>function</code> \</td>
+<td><code>Object</code></td>
+<td>Function that defines the criteria for the index result.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="pluck"></a></p>
+<h2>pluck(property) ⇒ <code>array</code></h2><p>Returns a new array containing the 'property' values</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>array</code> - New collection containing the property values
+of the input array.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property</td>
+<td><code>string</code></td>
+<td>Name of the property to retrieve the values for the new array</td>
+</tr>
+</tbody>
+</table>
+<p><a name="sum"></a></p>
+<h2>sum([spec]) ⇒ <code>number</code> | <code>string</code></h2><p>Returns the summatory of the result of executing the spec function
+on each array's element.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>number</code> | <code>string</code> - Result of the summatory of executing the
+spec function on each array's element.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[spec]</td>
+<td><code>function</code></td>
+<td>Function that defines the value for the summatory result. If not present, returns the summatory of the  array elements.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="max"></a></p>
+<h2>max([comparer]) ⇒ <code>null</code> | <code>number</code> | <code>string</code></h2><p>Returns the maximum value in the collection.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>null</code> | <code>number</code> | <code>string</code> - Returns the max value in the collection,
+null for empty arrays.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[comparer]</td>
+<td><code>function</code></td>
+<td>Function that receives two parameter to compare.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="min"></a></p>
+<h2>min([comparer]) ⇒ <code>null</code> | <code>number</code> | <code>string</code></h2><p>Returns the minimum value in the collection.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>null</code> | <code>number</code> | <code>string</code> - Returns the min value in the collection,
+null for empty arrays.  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[comparer]</td>
+<td><code>function</code></td>
+<td>Function that receives two parameter to compare.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="flatten"></a></p>
+<h2>flatten() ⇒ <code>Array</code></h2><p>Returns a new flat array, un-nesting arrays within other arrays.</p>
+<p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>Array</code> - New flat array  </p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#any">any</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#each">each</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#index">index</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#pluck">pluck</a></li><li><a href="global.html#select">select</a></li><li><a href="global.html#skip">skip</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#where">where</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 15 2017 20:17:37 GMT-0700 (MST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
