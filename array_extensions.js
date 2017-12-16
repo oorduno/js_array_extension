@@ -230,4 +230,44 @@ Array.prototype.max = function(comparer){
   return result;
 };
 
+Array.prototype.min = function(comparer){
+  var comparerValue;
+  var result = 0;
+
+  if(!this.length){
+    return null;
+  }
+
+  if(typeof comparer === 'undefined'){
+    this.forEach(function(element, index){
+      if(typeof element !== 'number'){
+        throw new Error('Numbers only');
+      }
+      if(index === 0){
+        result = element;
+      }
+      if(element < result){
+        result = element;
+      }
+    });
+  }else{
+    var reducer = function(min, currentValue){
+      if(min === null){
+        return currentValue;
+      }
+      comparerValue = comparer.call(this, min, currentValue);
+
+      if(comparerValue > 0){
+        return currentValue;
+      }
+
+      return min;
+    }.bind(this);
+
+    result = this.reduce(reducer, null);
+  }
+
+  return result;
+};
+
 module.exports = Array;
