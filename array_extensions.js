@@ -171,26 +171,60 @@ Array.prototype.sum = function(spec){
   var result, reducer, specResult, initValue;
 
   if(typeof spec === 'undefined'){
-    if(typeof this[0] === 'string'){
-      initValue = '';
-    }else{
-      initValue = 0;
-    }
-    reducer = function(total, currentValue){
+    reducer = function(total, currentValue, currentIndex){
+      if(total === null){
+        return currentValue;
+      }
+
       return total + currentValue;
     };
-    result = this.reduce(reducer, initValue);
+    result = this.reduce(reducer, null);
   }else{
     reducer = function(total, currentValue){
+      if(total === null){
+        return spec.call(this, currentValue);;
+      }
+
       specResult = spec.call(this, currentValue);
       return total + specResult;
     }.bind(this);
 
-    result = this.reduce(reducer, 0);
+    result = this.reduce(reducer, null);
+  }
 
-    if(typeof result === 'string' && result.charAt(0) === '0'){
-      result = result.substr(1);
-    }
+  return result;
+};
+
+Array.prototype.max = function(comparer){
+  var comparerValue;
+  result = 0;
+
+  if(!this.length){
+    return null;
+  }
+
+  if(typeof comparer === 'undefined'){
+    this.forEach(function(element){
+      if(typeof element !== 'number'){
+        throw new Error('Numbers only');
+      }
+      if(result < element){
+        result = element;
+      }
+    });
+  }else{
+    var reducer = function(max, currentValue){
+      if(max === null){
+        return currentValue;
+      }
+      comparerValue = comparer.call(this, max, currentValue);
+      if(comparerValue < 0){
+        return currentValue;
+      }
+
+      return max;
+    }.bind(this);
+    result = this.reduce(reducer, null);
   }
 
   return result;
