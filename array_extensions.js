@@ -4,9 +4,9 @@
 * @name each
 * @param {function} callback - Callback function to execute against every element in th collection
 */
-Array.prototype.each = function(callback){
+Array.prototype.each = function(callback) {
   var that = this;
-  this.forEach(function(element, index){
+  this.forEach(function(element, index) {
     callback.call(that, element, index);
   });
 };
@@ -20,12 +20,12 @@ Array.prototype.each = function(callback){
 * @return {array} New collection with the elements that matched the
 * callback function
 */
-Array.prototype.where = function(callback){
+Array.prototype.where = function(callback) {
   var that = this;
   var result = [];
 
-  this.forEach(function(element, index){
-    if(callback.call(that, element) === true){
+  this.forEach(function(element, index) {
+    if (callback.call(that, element)) {
       result.push(element);
     }
   });
@@ -41,18 +41,16 @@ Array.prototype.where = function(callback){
 * @param {function|*} spec - Function tested for each element in the array
 * @return {boolean} If any of the elements matched the spec function
 */
-Array.prototype.any = function(spec){
-  if(typeof spec === 'function'){
-
-    for(var i = 0; i < this.length; i++){
-      if(spec.call(this, this[i]) === true){
+Array.prototype.any = function(spec) {
+  if (typeof spec === 'function') {
+    for (var i = 0; i < this.length; i += 1) {
+      if (spec.call(this, this[i])) {
         return true;
       }
     }
-
-  }else{
-    for(var i = 0; i < this.length; i++){
-      if(spec === this[i]){
+  } else {
+    for (var i = 0; i < this.length; i += 1) {
+      if (spec === this[i]) {
         return true;
       }
     }
@@ -70,11 +68,11 @@ Array.prototype.any = function(spec){
 * @return {array} New collection containing the elements
 * returned by the spec function
 */
-Array.prototype.select = function(spec){
+Array.prototype.select = function(spec) {
   var result = [];
   var that = this;
 
-  if(typeof spec === 'function'){
+  if (typeof spec === 'function') {
     this.forEach(function(element, index){
       result.push(spec.call(that, element));
     });
@@ -95,16 +93,16 @@ Array.prototype.select = function(spec){
 * @return {array} New collection containing 'howMany' elements
 * matched the spec criteria
 */
-Array.prototype.take = function(howMany, spec){
+Array.prototype.take = function(howMany, spec) {
   var result = [];
 
-  if(typeof spec === 'undefined'){
+  if (typeof spec === 'undefined') {
     result = this.slice(0, (howMany));
-  }else{
-    for(var i = 0; i < this.length; i++){
-     if(spec.call(this, this[i]) === true){
+  } else {
+    for (var i = 0; i < this.length; i += 1) {
+     if (spec.call(this, this[i]) === true) {
         result.push(this[i]);
-        if(howMany <= result.length){
+        if (howMany <= result.length) {
           break;
         }
       }
@@ -123,11 +121,11 @@ Array.prototype.take = function(howMany, spec){
 * the new collection
 * @return {array} New collection which not includes the first 'howMany' elements
 */
-Array.prototype.skip = function(howMany){
+Array.prototype.skip = function(howMany) {
   var result = [];
 
-  if(howMany < this.length){
-    for(var i = howMany; i < this.length; i++){
+  if (howMany < this.length) {
+    for (var i = howMany; i < this.length; i += 1) {
       result.push(this[i]);
     }
   }
@@ -145,24 +143,22 @@ Array.prototype.skip = function(howMany){
 * @return {*|null} First element that matched the spec criteria.
 * Null in case that none element matched or if the collection is empty.
 */
-Array.prototype.first = function(spec){
-  var result = null;
-
-  if(!this.length){
-    return result
+Array.prototype.first = function(spec) {
+  if (!this.length) {
+    return null
   }
 
-  if(typeof spec === 'undefined'){
+  if (typeof spec === 'undefined') {
     return this[0];
-  }else{
-    for(var i = 0; i < this.length; i++){
-      if(spec.call(this, this[i]) === true){
+  } else {
+    for (var i = 0; i < this.length; i++) {
+      if (spec.call(this, this[i]) === true) {
         return this[i];
       }
     }
   }
 
-  return result;
+  return null;
 };
 
 /**
@@ -174,18 +170,18 @@ Array.prototype.first = function(spec){
 * @return {*|null} Last element that matched the spec criteria.
 * Null in case that none element matched or if the collection is empty.
 */
-Array.prototype.last = function(spec){
+Array.prototype.last = function(spec) {
   var result = null;
 
-  if(!this.length){
+  if (!this.length) {
     return result;
   }
 
-  if(typeof spec === 'undefined'){
+  if (typeof spec === 'undefined') {
     result = this[this.length - 1];
-  }else{
-    for(var i = (this.length - 1); i >= 0; i--){
-      if(spec.call(this, this[i]) === true){
+  } else {
+    for (var i = (this.length - 1); i >= 0; i -= 1) {
+      if (spec.call(this, this[i]) === true) {
         return this[i];
       }
     }
@@ -202,18 +198,18 @@ Array.prototype.last = function(spec){
 * count result. If not present, returns the array's length property.
 * @return {number} Number of elements that satisfies the spec criteria.
 */
-Array.prototype.count = function(spec){
+Array.prototype.count = function(spec) {
+  if (typeof spec === 'undefined') {
+    return this.length;
+  }
+
   var result = 0;
 
-  if(typeof spec === 'undefined'){
-    return this.length;
-  }else{
-    this.forEach(function(element, index){
-      if(spec.call(this, element) === true){
-        result++;
-      }
-    }, this);
-  }
+  this.forEach(function(element, index) {
+    if (spec.call(this, element) === true) {
+      result += 1;
+    }
+  }, this);
 
   return result;
 };
@@ -228,20 +224,18 @@ Array.prototype.count = function(spec){
 * @return {number} Zero based position of the element that satisfy
 * the spec criteria. -1 if no element matched.
 */
-Array.prototype.index = function(spec){
-  var result = -1;
-
-  if(typeof spec === 'function'){
-    for(var i = 0; i < this.length; i++){
-      if(spec.call(this, this[i]) === true){
+Array.prototype.index = function(spec) {
+  if (typeof spec === 'function') {
+    for (var i = 0; i < this.length; i += 1) {
+      if (spec.call(this, this[i]) === true) {
         return i;
       }
     }
-  }else{
+  } else {
     return this.indexOf(spec);
   }
 
-  return result;
+  return -1;
 };
 
 /**
@@ -253,11 +247,11 @@ Array.prototype.index = function(spec){
 * @return {array} New collection containing the property values
 * of the input array.
 */
-Array.prototype.pluck = function(property){
+Array.prototype.pluck = function(property) {
   var result = [];
 
-  this.forEach(function(element, index){
-    if(property in element){
+  this.forEach(function(element, index) {
+    if (property in element) {
       result.push(element[property]);
     }
   }, this);
@@ -276,21 +270,22 @@ Array.prototype.pluck = function(property){
 * @return {number|string} Result of the summatory of executing the
 * spec function on each array's element.
 */
-Array.prototype.sum = function(spec){
-  var result, reducer, specResult, initValue;
+Array.prototype.sum = function(spec) {
+  var result, reducer;
 
-  if(typeof spec === 'undefined'){
-    reducer = function(total, currentValue, currentIndex){
-      if(total === null){
+  if (typeof spec === 'undefined') {
+    reducer = function(total, currentValue, currentIndex) {
+      if (total === null) {
         return currentValue;
       }
 
       return total + currentValue;
     };
     result = this.reduce(reducer, null);
-  }else{
-    reducer = function(total, currentValue){
-      if(total === null){
+  } else {
+    var specResult;
+    reducer = function(total, currentValue) {
+      if (total === null) {
         return spec.call(this, currentValue);;
       }
 
@@ -313,30 +308,30 @@ Array.prototype.sum = function(spec){
 * @return {null|number|string} Returns the max value in the collection,
 * null for empty arrays.
 */
-Array.prototype.max = function(comparer){
-  var comparerValue;
-  result = 0;
-
-  if(!this.length){
+Array.prototype.max = function(comparer) {
+  if (!this.length) {
     return null;
   }
 
-  if(typeof comparer === 'undefined'){
-    this.forEach(function(element){
-      if(typeof element !== 'number'){
+  var comparerValue;
+  var result = 0;
+
+  if (typeof comparer === 'undefined') {
+    this.forEach(function(element) {
+      if (typeof element !== 'number') {
         throw new Error('Numbers only');
       }
-      if(result < element){
+      if (result < element) {
         result = element;
       }
     });
-  }else{
-    var reducer = function(max, currentValue){
-      if(max === null){
+  } else {
+    var reducer = function(max, currentValue) {
+      if (max === null) {
         return currentValue;
       }
       comparerValue = comparer.call(this, max, currentValue);
-      if(comparerValue < 0){
+      if (comparerValue < 0) {
         return currentValue;
       }
 
@@ -357,34 +352,34 @@ Array.prototype.max = function(comparer){
 * @return {null|number|string} Returns the min value in the collection,
 * null for empty arrays.
 */
-Array.prototype.min = function(comparer){
-  var comparerValue;
-  var result = 0;
-
-  if(!this.length){
+Array.prototype.min = function(comparer) {
+  if (!this.length) {
     return null;
   }
 
-  if(typeof comparer === 'undefined'){
-    this.forEach(function(element, index){
-      if(typeof element !== 'number'){
+  var comparerValue;
+  var result = 0;
+
+  if (typeof comparer === 'undefined') {
+    this.forEach(function(element, index) {
+      if (typeof element !== 'number') {
         throw new Error('Numbers only');
       }
-      if(index === 0){
+      if (index === 0 ) {
         result = element;
       }
-      if(element < result){
+      if (element < result) {
         result = element;
       }
     });
-  }else{
-    var reducer = function(min, currentValue){
-      if(min === null){
+  } else {
+    var reducer = function(min, currentValue) {
+      if (min === null) {
         return currentValue;
       }
       comparerValue = comparer.call(this, min, currentValue);
 
-      if(comparerValue > 0){
+      if (comparerValue > 0) {
         return currentValue;
       }
 
@@ -403,10 +398,10 @@ Array.prototype.min = function(comparer){
 * @name flatten
 * @return {Array} New flat array
 */
-Array.prototype.flatten = function(){
+Array.prototype.flatten = function() {
   var result = [];
 
-  var reducer = function(last, currentValue){
+  var reducer = function(last, currentValue) {
     return last.concat(
       Array.isArray(currentValue) ? currentValue.flatten() : currentValue
     );
